@@ -36,7 +36,6 @@ MainActivity extends AppCompatActivity {
                 editor.putString(getString(R.string.username), username.getText().toString());
                 editor.apply();
 
-
                 Intent startNewActivity = new Intent(this, displayHomeScreen.class);
                 startActivity(startNewActivity);
                 finish();

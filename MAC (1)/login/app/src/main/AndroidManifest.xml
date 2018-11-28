@@ -32,7 +32,9 @@
         <activity android:name=".activity_deleteclub" />
         <activity android:name=".activity_EventsStudent" />
         <activity android:name=".activity_LF" />
-        <activity android:name=".activity_addLF"></activity>
+        <activity android:name=".activity_addLF" />
+        <activity android:name=".ViewAllEvents" />
+        <activity android:name=".EventDetails"></activity>
     </application>
 
 </manifest>
