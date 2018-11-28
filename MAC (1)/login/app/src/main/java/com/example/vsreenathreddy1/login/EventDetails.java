@@ -1,20 +1,15 @@
 package com.example.vsreenathreddy1.login;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class EventDetails extends AppCompatActivity {
 
@@ -24,6 +19,7 @@ public class EventDetails extends AppCompatActivity {
     private TextView mDateTime;
     private TextView mAvai;
     private TextView mId;
+    private Button mButton;
 
 
     private static final String TAG = "EventDetails";
@@ -42,17 +38,22 @@ public class EventDetails extends AppCompatActivity {
         mDateTime = findViewById(R.id.dateTime);
         mAvai = findViewById(R.id.availability);
         mId = findViewById(R.id.id);
+        mButton = findViewById(R.id.buttonRegister);
 
         Intent intent = getIntent();
         event = intent.getParcelableExtra("event");
-        Log.e(TAG, "onCreate: " + event.name);
         if (event != null) {
-            mName.setText("Event Name: " + event.name);
-            mDes.setText("Event Description: " + event.description);
-            mLoc.setText("Event Location: " + event.location);
-            mDateTime.setText("Event Date & Time: " + event.date_time);
-            mAvai.setText("Event Availability: " + event.availability);
-            mId.setText("Event Id: " + event.id);
+            mName.setText("Name: " + event.name);
+            mDes.setText("Description: " + event.description);
+            mLoc.setText("Location: " + event.location);
+            mDateTime.setText("Date & Time: " + event.date_time);
+            if ((intent.getExtras().getBoolean("lf"))) {
+                mAvai.setVisibility(View.GONE);
+                mButton.setVisibility(View.GONE);
+            } else {
+                mAvai.setText("Availability: " + event.availability);
+            }
+            mId.setText("Id: " + event.id);
         }
     }
 

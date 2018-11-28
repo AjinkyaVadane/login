@@ -29,6 +29,7 @@
         android:background="#E1BEE7"
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
+        android:text="admin"
         android:hint="username"
         android:inputType="textPersonName"
         android:textSize="25sp" />
@@ -37,6 +38,7 @@
         android:id="@+id/editText2"
         android:layout_width="243dp"
         android:layout_height="wrap_content"
+        android:text="admin"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="122dp"

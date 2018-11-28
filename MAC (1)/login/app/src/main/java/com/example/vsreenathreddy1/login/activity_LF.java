@@ -28,23 +28,23 @@ public class activity_LF extends AppCompatActivity {
     }
 
     @Override
-    public boolean  onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem menu)
-    {
+    public boolean onOptionsItemSelected(MenuItem menu) {
 // Handle item selection
         switch (menu.getItemId()) {
             case R.id.line1:
-                Intent startNewActivity111 = new Intent(this, activity_EventsManager.class);
+                Intent startNewActivity111 = new Intent(this, getIntent().getExtras().getBoolean("isAdmin") ?
+                        activity_EventsManager.class : ViewAllEvents.class).putExtra("path", "events");
                 startActivity(startNewActivity111);
                 return true;
             case R.id.line2:
-                Intent startNewActivity112 = new Intent(this, activity_ClubsManager.class);
+                Intent startNewActivity112 = new Intent(this, getIntent().getExtras().getBoolean("isAdmin") ?
+                        activity_ClubsManager.class : ViewAllEvents.class).putExtra("path", "clubs");
                 startActivity(startNewActivity112);
                 return true;
             case R.id.line3:
@@ -64,13 +64,13 @@ public class activity_LF extends AppCompatActivity {
         }
     }
 
-    public void sendMsgUploadLF(View view){
+    public void sendMsgUploadLF(View view) {
         Intent startNewActivity = new Intent(this, activity_addLF.class);
         startActivity(startNewActivity);
     }
 
-    public void sendMsgViewLF(View view){
-        Intent startNewActivity = new Intent(this, description.class);
+    public void sendMsgViewLF(View view) {
+        Intent startNewActivity = new Intent(this, ViewAllEvents.class).putExtra("path", "LostFound");
         startActivity(startNewActivity);
     }
 

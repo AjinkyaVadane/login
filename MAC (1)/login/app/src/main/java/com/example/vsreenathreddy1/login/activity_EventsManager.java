@@ -206,6 +206,6 @@ public class activity_EventsManager extends AppCompatActivity {
     }
 
     public void openViewEvents(View view) {
-        startActivity(new Intent(this, ViewAllEvents.class));
+        startActivity(new Intent(this, ViewAllEvents.class).putExtra("path", getIntent().getExtras().getString("path")));
     }
 }

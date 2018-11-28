@@ -1,5 +1,6 @@
 package com.example.vsreenathreddy1.login;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -28,15 +29,18 @@ public class ViewAllEvents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_events);
         mRecyclerView = findViewById(R.id.recyclerView);
-        getAllEvents();
+        Intent intent = getIntent();
 
-        rvAdapter = new RVAdapter(this, mList);
+        getAllEvents(intent);
+
+        rvAdapter = new RVAdapter(this, mList, getIntent().getStringExtra("path").equals("LostFound"));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setAdapter(rvAdapter);
     }
 
-    private void getAllEvents() {
-        FirebaseDatabase.getInstance().getReference("events")
+    private void getAllEvents(Intent intent) {
+        Log.e(TAG, "getAllEvents: "+ intent.getStringExtra("path"));
+        FirebaseDatabase.getInstance().getReference(intent.getStringExtra("path"))
                 .addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {

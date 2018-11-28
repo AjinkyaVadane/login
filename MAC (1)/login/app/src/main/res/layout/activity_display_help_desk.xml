@@ -1,53 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".displayHelpDesk"
-    android:label="@string/helpDesk">
+    android:label="@string/helpDesk"
+    android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <EditText
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:onClick="locateUs"
+        android:layout_height="150dp"
+        android:layout_above="@+id/editTexthelp"
+        android:layout_marginBottom="30dp"
+        android:padding="5dp"
+        android:background="@android:drawable/ic_dialog_map"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_centerHorizontal="true"/>
+
+
+        <TextView
             android:id="@+id/editTexthelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
             android:inputType="text"
             android:text="@string/help_desk"
             android:textColor="#800000"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:focusable="false"
             android:focusableInTouchMode="false" />
-        <EditText
+
+        <Button
             android:id="@+id/editText3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_below="@id/editTexthelp"
             android:inputType="textEmailAddress"
             android:text="@string/help_desk1"
+            android:textColor="@color/colorPrimary"
             android:visibility="visible"
             android:clickable="false"
+            android:onClick="sendMail"
             android:cursorVisible="false"
             android:focusable="false"
+            android:textSize="15sp"
+            android:padding="15dp"
+            android:layout_margin="5dp"
             android:focusableInTouchMode="false"/>
 
-        <EditText
+        <Button
             android:id="@+id/editText4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:padding="5dp"
+            android:layout_below="@id/editText3"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="contactUs"
             android:inputType="phone"
             android:text="@string/help_desk2"
             android:clickable="false"
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false"/>
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+    </RelativeLayout>

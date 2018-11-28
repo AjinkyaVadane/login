@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class displayHomeScreen extends AppCompatActivity {
 
+    public boolean ad = false;
     private static final String TAG = "displayHomeScreen";
 
     @Override
@@ -40,20 +41,16 @@ public class displayHomeScreen extends AppCompatActivity {
         // Handle item selection
         switch (menu.getItemId()) {
             case R.id.line1:
-                Intent startNewActivity111 = new Intent(this, activity_EventsManager.class);
-                startActivity(startNewActivity111);
+                openEvent();
                 return true;
             case R.id.line2:
-                Intent startNewActivity112 = new Intent(this, activity_ClubsManager.class);
-                startActivity(startNewActivity112);
+                openClub();
                 return true;
             case R.id.line3:
-                Intent startNewActivity121 = new Intent(this, activity_LF.class);
-                startActivity(startNewActivity121);
+                opelLF();
                 return true;
             case R.id.line4:
-                Intent startNewActivity122 = new Intent(this, displayHelpDesk.class);
-                startActivity(startNewActivity122);
+                openHD();
                 return true;
             case R.id.line5:
                 Intent intent1 = new Intent(this, MainActivity.class);
@@ -64,39 +61,40 @@ public class displayHomeScreen extends AppCompatActivity {
         }
     }
 
-    public void sendMsg11(View view) {
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        readEventDB();
+    private void openHD() {
+        Intent startNewActivity122 = new Intent(this, displayHelpDesk.class).putExtra("isAdmin", Utils.checkIfUserIsAdmin(this));
+        startActivity(startNewActivity122);
     }
 
-    private void readEventDB() {
-        Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+    private void opelLF() {
+        Intent startNewActivity121 = new Intent(this, activity_LF.class).putExtra("isAdmin", Utils.checkIfUserIsAdmin(this));
+        startActivity(startNewActivity121);
+    }
+
+    private void openClub() {
         SharedPreferences sharedPref = getSharedPreferences("MAC", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPref.edit();
         final String username = sharedPref.getString("username", "-1");
         Log.e(TAG, "readDB: " + username);
-        Toast.makeText(this, "readDB: 2" + username, Toast.LENGTH_SHORT).show();
         // Read from the database
         FirebaseDatabase.getInstance().getReference("Users/manager/manager1")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Toast.makeText(displayHomeScreen.this, "3", Toast.LENGTH_SHORT).show();
-
                         // This method is called once with the initial value and again
                         // whenever data at this location is updated.
                         Users value = dataSnapshot.getValue(Users.class);
                         Intent intent;
                         if (value != null) {
-                            Toast.makeText(displayHomeScreen.this, "4", Toast.LENGTH_SHORT).show();
-                            if (value.username.equals(username)) { //if manager
-                                Toast.makeText(displayHomeScreen.this, "5", Toast.LENGTH_SHORT).show();
-                                intent = new Intent(displayHomeScreen.this, activity_EventsManager.class);
+                            if (value.username.equals(username)) {
+                                intent = new Intent(displayHomeScreen.this, activity_ClubsManager.class);
+                                editor.putBoolean("isAdmin", true);
                             } else { //normal user
-                                intent = new Intent(displayHomeScreen.this, ViewAllEvents.class);
+                                editor.putBoolean("isAdmin", false);
+                                intent = new Intent(displayHomeScreen.this, ViewAllEvents.class).putExtra("path", "clubs");
                             }
+                            editor.apply();
                             startActivity(intent);
-                        } else {
-                            Toast.makeText(displayHomeScreen.this, "6", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -107,54 +105,56 @@ public class displayHomeScreen extends AppCompatActivity {
                     }
                 });
     }
+
+    private void openEvent() {
+        SharedPreferences sharedPref = getSharedPreferences("MAC", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPref.edit();
+        final String username = sharedPref.getString("username", "-1");
+        Log.e(TAG, "readDB: " + username);
+        // Read from the database
+        FirebaseDatabase.getInstance().getReference("Users/manager/manager1")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+                        Users value = dataSnapshot.getValue(Users.class);
+                        Intent intent;
+                        if (value != null) {
+                            if (value.username.equals(username)) { //if manager
+                                intent = new Intent(displayHomeScreen.this, activity_EventsManager.class).putExtra("path", "events");
+                                editor.putBoolean("isAdmin", true);
+                            } else { //normal user
+                                editor.putBoolean("isAdmin", false);
+                                intent = new Intent(displayHomeScreen.this, ViewAllEvents.class).putExtra("path", "events");
+                            }
+                            editor.apply();
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w(TAG, "Failed to read value.", error.toException());
+                    }
+                });
+    }
+
+    public void sendMsg11(View view) {
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        openEvent();
+    }
+
 
     //changed by ajinkya
     //TODO:1
     public void sendMsg12(View view) {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        readClubDB();
+        openClub();
         /*Intent startNewActivity12 = new Intent(this, displayClubs.class);
         startActivity(startNewActivity12);*/
-    }
-
-    private void readClubDB() {
-        Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
-        SharedPreferences sharedPref = getSharedPreferences("MAC", Context.MODE_PRIVATE);
-        final String username = sharedPref.getString("username", "-1");
-        Log.e(TAG, "readDB: " + username);
-        Toast.makeText(this, "readDB: 2" + username, Toast.LENGTH_SHORT).show();
-        // Read from the database
-        FirebaseDatabase.getInstance().getReference("Users/manager/manager1")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Toast.makeText(displayHomeScreen.this, "3", Toast.LENGTH_SHORT).show();
-
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
-                        Users value = dataSnapshot.getValue(Users.class);
-                        Intent intent;
-                        if (value != null) {
-                            Toast.makeText(displayHomeScreen.this, "4", Toast.LENGTH_SHORT).show();
-                            if (value.username.equals(username)) { //if manager
-                                Toast.makeText(displayHomeScreen.this, "5", Toast.LENGTH_SHORT).show();
-//changed
-                                intent = new Intent(displayHomeScreen.this, activity_ClubsManager.class);
-                            } else { //normal user
-                                intent = new Intent(displayHomeScreen.this, displayClubs.class);
-                            }
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(displayHomeScreen.this, "6", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        Log.w(TAG, "Failed to read value.", error.toException());
-                    }
-                });
     }
 
 
@@ -162,14 +162,15 @@ public class displayHomeScreen extends AppCompatActivity {
 
 
     public void sendMsg21(View view) {
-        Intent startNewActivity21 = new Intent(this, activity_LF.class);
-        startActivity(startNewActivity21);
+        opelLF();
     }
 
 
     public void sendMsg22(View view) {
-        Intent startNewActivity22 = new Intent(this, displayHelpDesk.class);
-        startActivity(startNewActivity22);
+        openHD();
     }
+
+
+
 }
 

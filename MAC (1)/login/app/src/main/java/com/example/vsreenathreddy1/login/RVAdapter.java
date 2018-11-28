@@ -17,9 +17,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
 
     Context mContext;
     List<Event> mList;
-    public RVAdapter(Activity context, List<Event> list) {
+    boolean isLostFound;
+    public RVAdapter(Activity context, List<Event> list, boolean equals) {
         mContext = context;
         mList = list;
+        isLostFound = equals;
     }
 
     @NonNull
@@ -38,6 +40,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, EventDetails.class);
                 intent.putExtra("event", mList.get(i));
+                intent.putExtra("lf", isLostFound);
                 mContext.startActivity(intent);
             }
         });

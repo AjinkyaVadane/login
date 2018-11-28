@@ -82,26 +82,21 @@ public class activity_ClubsManager extends AppCompatActivity {
 
 
     private void readDBSendMsgAddClub() {
-        Toast.makeText(this, "Add Event", Toast.LENGTH_SHORT).show();
         SharedPreferences sharedPref = getSharedPreferences("MAC", Context.MODE_PRIVATE);
         final String username = sharedPref.getString("username", "-1");
         Log.e(TAG, "readDB: "+username);
-        Toast.makeText(this, "readDB: 2"+username, Toast.LENGTH_SHORT).show();
         // Read from the database
         FirebaseDatabase.getInstance().getReference("Users/manager/manager1")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Toast.makeText(activity_ClubsManager.this, "3", Toast.LENGTH_SHORT).show();
 
                         // This method is called once with the initial value and again
                         // whenever data at this location is updated.
                         Users value = dataSnapshot.getValue(Users.class);
                         Intent intent;
                         if (value != null) {
-                            Toast.makeText(activity_ClubsManager.this, "4", Toast.LENGTH_SHORT).show();
                             if (value.username.equals(username)) { //if manager
-                                Toast.makeText(activity_ClubsManager.this, "5", Toast.LENGTH_SHORT).show();
 
                                 intent = new Intent(activity_ClubsManager.this, AddClub.class);
                             } else { //normal user
@@ -109,7 +104,6 @@ public class activity_ClubsManager extends AppCompatActivity {
                             }
                             startActivity(intent);
                         } else {
-                            Toast.makeText(activity_ClubsManager.this, "6", Toast.LENGTH_SHORT).show();
                         }
                     }
                     @Override
@@ -125,36 +119,28 @@ public class activity_ClubsManager extends AppCompatActivity {
     //2
 
     private void sendMsgModifyClub() {
-        Toast.makeText(this, "Modify Event", Toast.LENGTH_SHORT).show();
         SharedPreferences sharedPref = getSharedPreferences("MAC", Context.MODE_PRIVATE);
         final String username = sharedPref.getString("username", "-1");
         Log.e(TAG, "readDB: "+username);
-        Toast.makeText(this, "readDB: 2"+username, Toast.LENGTH_SHORT).show();
         // Read from the database
         FirebaseDatabase.getInstance().getReference("Users/manager/manager1")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Toast.makeText(activity_ClubsManager.this, "3", Toast.LENGTH_SHORT).show();
 
                         // This method is called once with the initial value and again
                         // whenever data at this location is updated.
                         Users value = dataSnapshot.getValue(Users.class);
                         Intent intent;
                         if (value != null) {
-                            Toast.makeText(activity_ClubsManager.this, "4", Toast.LENGTH_SHORT).show();
                             if (value.username.equals(username)) { //if manager
-                                Toast.makeText(activity_ClubsManager.this, "5", Toast.LENGTH_SHORT).show();
 //need to change
                                 intent = new Intent(activity_ClubsManager.this, AddClub.class);
                             } else { //normal user
                                 intent = new Intent(activity_ClubsManager.this, displayClubs.class);
                             }
                             startActivity(intent);
-                        } else {
-                            Toast.makeText(activity_ClubsManager.this, "6", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                        }                     }
                     @Override
                     public void onCancelled(DatabaseError error) {
                         // Failed to read value
@@ -205,4 +191,8 @@ public class activity_ClubsManager extends AppCompatActivity {
                 });
     }
 
+
+    public void viewClub(View view) {
+        startActivity(new Intent(activity_ClubsManager.this, ViewAllEvents.class).putExtra("path", "clubs"));
+    }
 }
