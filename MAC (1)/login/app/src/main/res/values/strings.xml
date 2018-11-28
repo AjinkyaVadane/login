@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Maverick Activity Center</string>
+    <string name="LOGIN">LOGIN</string>
+    <string name="LOGOUT">Logout</string>
+    <string name="clubs">Club</string>
+    <string name="events">Event</string>
+    <string name="lostAndFound">Lost and Found</string>
+    <string name="helpDesk">Help Desk</string>
+    <string name="title_activity_nav">nav</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="help_desk">Help Desk</string>
+    <string name="help_desk1">mac@uta.edu</string>
+    <string name="help_desk2">1800-123-MAC</string>
+    <string name="sendE1">Event1</string>
+    <string name="sendE2">Event2</string>
+    <string name="sendC1">Club1</string>
+    <string name="sendC2">Club2</string>
+    <string name="title_activity_display_land_f">displayLandF</string>
+    <string name="username">username</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.vsreenathreddy1.login">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".displayHomeScreen" />
+        <activity android:name=".displayEvents" />
+        <activity android:name=".displayClubs" />
+        <activity android:name=".displayHelpDesk" />
+        <activity android:name=".sendEvent" />
+        <activity android:name=".sendClub" />
+        <activity android:name=".displayLandF" />
+        <activity android:name=".description" />
+        <activity android:name=".AddEvent" />
+        <activity android:name=".activity_EventsManager" />
+        <activity android:name=".activity_deleteevent" />
+        <activity android:name=".activity_ClubsManager" />
+        <activity android:name=".AddClub" />
+        <activity android:name=".activity_deleteclub" />
+        <activity android:name=".activity_EventsStudent" />
+        <activity android:name=".activity_LF" />
+        <activity android:name=".activity_addLF"></activity>
+    </application>
+
+</manifest>

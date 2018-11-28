@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".description">
+
+    <android.support.design.circularreveal.CircularRevealRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/buttonRC1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="114dp"
+            android:onClick="onClickDescription"
+            android:text="SUBMIT FOUND ITEM"
+            tools:layout_editor_absoluteX="220dp" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="26dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Item Name" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText6"
+            android:layout_alignRight="@+id/editText6"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="94dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Location" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText6"
+            android:layout_alignRight="@+id/editText6"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="160dp"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="ID" />
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="342dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editText6"
+            android:layout_alignLeft="@+id/editText6"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="180dp"
+            android:ems="10"
+            android:hint="Description"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/editText11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="223dp"
+            android:ems="10"
+            android:inputType="date"
+            android:hint="Date"/>
+
+    </android.support.design.circularreveal.CircularRevealRelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

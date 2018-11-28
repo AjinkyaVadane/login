@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "373244624794",
+    "firebase_url": "https://macactivity-b443d.firebaseio.com",
+    "project_id": "macactivity-b443d",
+    "storage_bucket": "macactivity-b443d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373244624794:android:fb41da68fccc210a",
+        "android_client_info": {
+          "package_name": "com.example.vsreenathreddy1.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373244624794-vftbbnrutoc3gu2klk0mp1l9pth4en2f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vsreenathreddy1.login",
+            "certificate_hash": "265c42d11fa12e9f755df16ff0c4353244e0516c"
+          }
+        },
+        {
+          "client_id": "373244624794-433scnk2qfn8f7ksgmhqvt65h169q8aq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTfpiGK1C-UnrkDQP3rxp34CzUUX7JeUo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373244624794-433scnk2qfn8f7ksgmhqvt65h169q8aq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
